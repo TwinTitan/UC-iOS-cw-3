@@ -21,7 +21,7 @@ struct ContentView: View {
             Text("لا إله إلا الله")
                 .padding()
         }
-            ExtractedView(count1: $count1, count2: $count2, count3: $count3)
+            Counter(count1: $count1, count2: $count2, count3: $count3)
         }
     }
 }
@@ -34,7 +34,7 @@ struct ContentView_Previews: PreviewProvider {
 
 
 
-struct ExtractedView: View {
+struct Counter: View {
     @Binding var count1: Int
     @Binding var count2: Int
     @Binding var count3: Int
