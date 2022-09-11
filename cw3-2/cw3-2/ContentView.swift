@@ -12,10 +12,16 @@ struct ContentView: View {
     @State var count2 = 0
     @State var count3 = 0
     var body: some View {
+        HStack{
         VStack{
-            counter1(count1: $count1)
-            counter2(count2: $count2)
-            counter3(count3: $count3)
+            Text("سبحان الله و بحمده")
+                .padding()
+            Text("سبحان الله العظيم")
+                .padding()
+            Text("لا إله إلا الله")
+                .padding()
+        }
+            ExtractedView(count1: $count1, count2: $count2, count3: $count3)
         }
     }
 }
@@ -26,13 +32,14 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct counter1: View {
+
+
+struct ExtractedView: View {
     @Binding var count1: Int
+    @Binding var count2: Int
+    @Binding var count3: Int
     var body: some View {
-        HStack{
-            Text("سبحان الله و بحمده")
-                .padding()
-            Spacer()
+        VStack{
             Text("\(count1)")
                 .foregroundColor(Color.white)
                 .frame(width: 50, height: 50)
@@ -44,18 +51,7 @@ struct counter1: View {
                 .onLongPressGesture(minimumDuration: 1){
                     count1 = 0
                 }
-                .padding()
-        }
-    }
-}
-
-struct counter2: View {
-    @Binding var count2: Int
-    var body: some View {
-        HStack{
-            Text("سبحان الله العظيم")
-                .padding()
-                Spacer()
+            
             Text("\(count2)")
                 .foregroundColor(Color.white)
                 .frame(width: 50, height: 50)
@@ -67,18 +63,6 @@ struct counter2: View {
                 .onLongPressGesture(minimumDuration: 1){
                     count2 = 0
                 }
-                .padding()
-        }
-    }
-}
-
-struct counter3: View {
-    @Binding var count3: Int
-    var body: some View {
-        HStack{
-            Text("لا إله إلا الله")
-                .padding()
-            Spacer()
             Text("\(count3)")
                 .foregroundColor(Color.white)
                 .frame(width: 50, height: 50)
@@ -90,8 +74,6 @@ struct counter3: View {
                 .onLongPressGesture(minimumDuration: 1){
                     count3 = 0
                 }
-                .padding()
-                
         }
     }
 }
