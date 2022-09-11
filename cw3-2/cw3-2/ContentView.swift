@@ -12,16 +12,10 @@ struct ContentView: View {
     @State var count2 = 0
     @State var count3 = 0
     var body: some View {
-        HStack{
         VStack{
-            Text("سبحان الله و بحمده")
-                .padding()
-            Text("سبحان الله العظيم")
-                .padding()
-            Text("لا إله إلا الله")
-                .padding()
-        }
-            Counter(count1: $count1, count2: $count2, count3: $count3)
+            Counter(text: "سبحان الله و بحمده", count1: $count1)
+            Counter(text: "سبحان الله العظيم", count1: $count2)
+            Counter(text: "لا إله إلا الله", count1: $count3)
         }
     }
 }
@@ -35,11 +29,13 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct Counter: View {
+    var text: String
     @Binding var count1: Int
-    @Binding var count2: Int
-    @Binding var count3: Int
     var body: some View {
-        VStack{
+        HStack{
+            Text(text)
+                .font(.largeTitle)
+                .padding()
             Text("\(count1)")
                 .foregroundColor(Color.white)
                 .frame(width: 50, height: 50)
@@ -50,29 +46,6 @@ struct Counter: View {
                 }
                 .onLongPressGesture(minimumDuration: 1){
                     count1 = 0
-                }
-            
-            Text("\(count2)")
-                .foregroundColor(Color.white)
-                .frame(width: 50, height: 50)
-                .background(.cyan)
-                .clipShape(Circle())
-                .onTapGesture {
-                    count2+=1
-                }
-                .onLongPressGesture(minimumDuration: 1){
-                    count2 = 0
-                }
-            Text("\(count3)")
-                .foregroundColor(Color.white)
-                .frame(width: 50, height: 50)
-                .background(.cyan)
-                .clipShape(Circle())
-                .onTapGesture {
-                    count3+=1
-                }
-                .onLongPressGesture(minimumDuration: 1){
-                    count3 = 0
                 }
         }
     }
